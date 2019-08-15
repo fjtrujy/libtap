@@ -16,18 +16,18 @@ tap.o: tap.h
 tests: $(TESTS)
 
 $(TESTS): %: %.o $(EE_OBJS)
-	$(EE_CC) -mno-crt0 -T$(PS2SDK)/ee/startup/linkfile $(EE_CFLAGS) $(EE_INCS) \
-	-o $@ $(PS2SDK)/ee/startup/crt0.o $(EE_OBJS) $< $(EE_LDFLAGS) $(EE_LIBS)
+	$(EE_CC) -mno-crt0 -T$(PS2SDKUJ)/ee/startup/linkfile $(EE_CFLAGS) $(EE_INCS) \
+	-o $@ $(PS2SDKUJ)/ee/startup/crt0.o $(EE_OBJS) $< $(EE_LDFLAGS) $(EE_LIBS)
 
 install: all
-	mkdir -p $(PS2SDK)/ports/include
-	mkdir -p $(PS2SDK)/ports/lib
-	cp -f $(EE_LIB) $(PS2SDK)/ports/lib
-	cp -f tap.h $(PS2SDK)/ports/include
+	mkdir -p $(PS2SDKUJ)/ports/include
+	mkdir -p $(PS2SDKUJ)/ports/lib
+	cp -f $(EE_LIB) $(PS2SDKUJ)/ports/lib
+	cp -f tap.h $(PS2SDKUJ)/ports/include
 
 clean:
 	rm -f $(EE_LIB) $(EE_OBJS) $(TESTS) t/*.o
 
 
-include $(PS2SDK)/samples/Makefile.pref
-include $(PS2SDK)/samples/Makefile.eeglobal
+include $(PS2SDKUJ)/samples/Makefile.pref
+include $(PS2SDKUJ)/samples/Makefile.eeglobal
